@@ -1,5 +1,5 @@
 const express = require("express");
-const connectDB = require("./src/config/db");
+const connectDB = require("../config/db");
 
 const app = express();
 
@@ -11,9 +11,9 @@ app.use(express.json({ extend: false }));
 app.get("/", (request, response) => response.json({ msg: "welcome" }));
 
 // Define routes
-app.use("/api/users", require("./src/routes/UserRoutes"));
-app.use("/api/auth", require("./src/routes/AuthRoutes"));
-app.use("/api/contacts", require("./src/routes/ContactRoutes"));
+app.use("/api/users", require("./routes/UserRoutes"));
+app.use("/api/auth", require("./routes/AuthRoutes"));
+app.use("/api/contacts", require("./routes/ContactRoutes"));
 
 const PORT = process.env.PORT || 5000;
 
