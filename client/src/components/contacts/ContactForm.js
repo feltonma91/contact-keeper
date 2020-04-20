@@ -16,7 +16,7 @@ const ContactForm = () => {
         type: "personal",
     });
 
-    // Mimic ComponentDidMount lifecycle method
+    // Mimic ComponentDidMount lifecycle method update only when dependencies change
     useEffect(() => {
         if (current !== null) {
             setContact(current);

@@ -8,8 +8,10 @@ const ContactFilter = () => {
     // Deconstruct methods from context
     const { clearFilter, filterContacts, filtered } = contactContext;
 
+    // init ref object
     const text = useRef("");
 
+    // Set ref value when filtered updates
     useEffect(() => {
         if (filtered === null) {
             text.current.value = "";

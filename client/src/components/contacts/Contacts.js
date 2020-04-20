@@ -4,7 +4,10 @@ import ContactContext from "../context/contacts/ContactContext";
 import ContactItem from "./ContactItem";
 
 const Contacts = () => {
+    // Set up Contact context
     const contactContext = useContext(ContactContext);
+
+    // Deconstruct methods from context
     const { contacts, filtered } = contactContext;
 
     if (contacts.length === 0) {
