@@ -1,6 +1,6 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import ContactContext from "../context/contacts/ContactContext";
+import ContactContext from "../../context/contacts/ContactContext";
 import ContactItem from "./ContactItem";
 
 const Contacts = () => {
@@ -8,7 +8,12 @@ const Contacts = () => {
     const contactContext = useContext(ContactContext);
 
     // Deconstruct methods from context
-    const { contacts, filtered } = contactContext;
+    const { contacts, filtered, getContacts, loading } = contactContext;
+
+    useEffect(() => {
+        getContacts();
+        // eslint-disable-next-lin
+    }, []);
 
     if (contacts.length === 0) {
         return <h4>Please add a contact</h4>;
@@ -19,7 +24,7 @@ const Contacts = () => {
                 {filtered !== null
                     ? filtered.map((contact) => (
                           <CSSTransition
-                              key={contact.id}
+                              key={contact._id}
                               timeout={1000}
                               classNames="item"
                           >
@@ -28,7 +33,7 @@ const Contacts = () => {
                       ))
                     : contacts.map((contact) => (
                           <CSSTransition
-                              key={contact.id}
+                              key={contact._id}
                               timeout={1000}
                               classNames="item"
                           >
